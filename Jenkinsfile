@@ -25,6 +25,14 @@ pipeline{
                     }
                 }          
             }
+          stage('Back-end') {
+            agent {
+                docker { image 'python:3.7' }
+            }
+            steps {
+                sh 'python --version'
+            }
+        }
             stage('Deploy App'){
                 steps{
                     sh "docker-compose up -d"
